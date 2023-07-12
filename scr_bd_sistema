@@ -1,0 +1,27 @@
+--
+-- Base de datos: `bd_sistema`
+-- Crear si no existe
+   CREATE DATABASE IF NOT EXISTS bd_sistema;
+-- Usar la base de datos a usar
+   USE bd_sistema;
+
+DROP TABLE IF EXISTS tblusuarios;
+CREATE TABLE IF NOT EXISTS tblusuarios (
+  id smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT,
+  usuario varchar(20) NOT NULL DEFAULT '',
+  perfil int(11) NOT NULL DEFAULT '0',
+  clave varchar(20) NOT NULL DEFAULT '',
+  correo varchar(40) NOT NULL,
+  PRIMARY KEY (id)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+
+
+--
+-- Volcado de datos para la tabla usuarios
+--
+INSERT INTO tblusuarios (id, usuario, perfil, clave, correo) VALUES
+(1, 'mariano', 1, 'matOq4wkFsob6', 'mariano@gmail.com');
+
+-- Otorgar todos los perfiles a un usuario en comÃºn
+GRANT ALL ON  bd_sistema.* to sacarias@localhost identified By "12345678";
+GRANT ALL ON bd_sistema.* TO 'sacarias'@'%' IDENTIFIED BY '12345678'; 
